@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
-import { InputGroup, InputGroupAddon, Button, Input } from "reactstrap";
+import { InputGroup, InputGroupAddon, Input } from "reactstrap";
 const UpdateMovie = () => {
   const { push } = useHistory();
 
@@ -55,7 +55,7 @@ const UpdateMovie = () => {
 
         <br />
         <InputGroup>
-          <InputGroupAddon addonType="prepend">Title </InputGroupAddon>
+          <InputGroupAddon addonType="prepend">Director </InputGroupAddon>
           <Input
             type="text"
             name="director"
@@ -66,7 +66,7 @@ const UpdateMovie = () => {
 
         <br />
         <InputGroup>
-          <InputGroupAddon addonType="prepend">Title </InputGroupAddon>
+          <InputGroupAddon addonType="prepend">Metascore </InputGroupAddon>
           <Input
             type="number"
             name="metascore"
@@ -76,7 +76,7 @@ const UpdateMovie = () => {
         </InputGroup>
         <br />
         <InputGroup>
-          <InputGroupAddon addonType="prepend">Title </InputGroupAddon>
+          <InputGroupAddon addonType="prepend">Stars </InputGroupAddon>
           <Input
             type="text"
             name="star"
