@@ -1,8 +1,22 @@
-import React from 'react';
+import React from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
+const MovieCard = (props) => {
+  const { push } = useHistory();
 
-const MovieCard = props => {
-  const { title, director, metascore, stars } = props.movie;
+  console.log("MoveCard props:", props);
+  const { title, director, metascore, stars, id } = props.movie;
+
+  const deleteMovie = (e) => {
+    e.preventDefault();
+    axios.delete(`http://localhost:5000/api/movies/${id}`).then((res) => {
+      axios
+        .get(`http://localhost:5000/api/movies`)
+        .then((res) => props.setMovieList(res.data));
+      push(`/`);
+    });
+  };
   return (
     <div className="movie-card">
       <h2>{title}</h2>
@@ -14,13 +28,24 @@ const MovieCard = props => {
       </div>
       <h3>Actors</h3>
 
-      {stars.map(star => (
+      {stars.map((star) => (
         <div key={star} className="movie-star">
           {star}
         </div>
       ))}
+      <button className="buttons" onClick={() => push(`/edit-movie/${id}`)}>
+        Edit
+      </button>
+      <button
+        className="buttonD"
+        onClick={(e) => {
+          deleteMovie(e);
+          push(`/`);
+        }}
+      >
+        Delete
+      </button>
     </div>
   );
 };
-
 export default MovieCard;
